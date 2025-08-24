@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Claro Perú - Maestro de Portabilidad</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-form">
+            <div class="login-header">
+                <div class="login-logo">📱</div>
+                <h2 style="color: #2c3e50; margin-bottom: 10px;">Liga Claro Perú</h2>
+                <p style="color: #7f8c8d; font-size: 14px;">Sistema de Capacitación</p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Documento de Identidad (DNI/CE)</label>
+                <input type="text" id="dniInput" class="form-input" placeholder="Ingrese su DNI o Carné de Extranjería" maxlength="12">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Tipo de Usuario</label>
+                <div class="user-type-group">
+                    <div class="radio-option">
+                        <input type="radio" id="userAsesor" name="userType" value="asesor" class="radio-input" checked>
+                        <label for="userAsesor" class="radio-label">👤 Asesor</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="userFormador" name="userType" value="formador" class="radio-input">
+                        <label for="userFormador" class="radio-label">👨‍🏫 Formador</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="password-group" id="passwordGroup">
+                <label class="form-label">Contraseña</label>
+                <input type="password" id="passwordInput" class="form-input" placeholder="Ingrese la contraseña">
+            </div>
+            
+            <button type="button" class="login-button" id="loginButton">🚀 Ingresar al Sistema</button>
+            
+            <div class="error-message" id="errorMessage">
+                ❌ Credenciales incorrectas. Verifique sus datos.
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                ✅ ¡Acceso autorizado! Redirigiendo...
+            </div>
+        </div>
+    </div>
+
+    <div class="report-screen" id="reportScreen">
+        <div class="report-container">
+            <div class="report-header">
+                <h1 class="report-title">📊 Panel de Formador</h1>
+                <p class="report-subtitle">Sistema de Reportes y Estadísticas - Usuario: <span id="formadorName">Formador</span></p>
+            </div>
+            
+            <div class="report-info">
+                <h3>📋 Información del Sistema</h3>
+                <p>Desde este panel puedes exportar los datos de rendimiento de los asesores que han completado el entrenamiento. El reporte incluye respuestas detalladas, puntuaciones y estadísticas de desempeño.</p>
+            </div>
+            
+            <div class="report-actions">
+                <button class="report-button" id="exportButton">
+                    📊 Exportar Reporte Excel
+                </button>
+                <button class="report-button logout-button" id="logoutButton">
+                    🚪 Cerrar Sesión
+                </button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalUsers">0</span>
+                    <span class="stat-label">Usuarios Registrados</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalSessions">0</span>
+                    <span class="stat-label">Sesiones de Juego</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="avgScore">0%</span>
+                    <span class="stat-label">Promedio de Aciertos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="completionRate">0%</span>
+                    <span class="stat-label">Tasa de Completación</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-logo">📱</div>
+        <div class="intro-text">
+            <h1 style="font-size: 3em; margin-bottom: 20px;">🎮 LIGA CLARO PERÚ</h1>
+            <h2 style="margin-bottom: 30px; color: #ffa502;">MAESTRO DE PORTABILIDAD</h2>
+            <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 30px;">
+                Bienvenido a la región de <strong>Paldea Claro</strong>, donde los entrenadores más valientes 
+                dominan el arte de la portabilidad móvil. Tu misión: convertirte en el <strong>Campeón 
+                de la Liga Claro</strong> y ayudar a miles de clientes a encontrar su plan perfecto.
+            </p>
+            <p style="margin-bottom: 40px; opacity: 0.8;">
+                Enfréntate a 5 gimnasios únicos, derrota a sus líderes y obtén las medallas legendarias 
+                que te coronarán como el mejor <strong>Jalador de Portabilidad</strong> de todo Perú.
+            </p>
+            <button class="action-button" id="startAdventureBtn" style="font-size: 18px; padding: 20px 40px;">
+                🚀 ¡COMENZAR AVENTURA!
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="screen active" id="mainScreen">
+            <div class="game-header">
+                <div class="pokeball"></div>
+                <h1>🏆 LIGA CLARO PERÚ - MAESTRO DE PORTABILIDAD</h1>
+                <p style="font-size: 1.1em; margin: 15px 0;">
+                    ¡Conviértete en el entrenador de portabilidad más poderoso de la región!
+                </p>
+                
+                <div class="trainer-profile">
+                    <h3 style="margin-bottom: 15px;">👤 Perfil del Entrenador: <span id="trainerName">Asesor</span></h3>
+                    <div class="trainer-stats">
+                        <div class="stat-bubble">
+                            <span class="stat-value" id="playerXP">0</span>
+                            <span>Puntos XP</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="stat-value" id="playerLevel">1</span>
+                            <span>Nivel</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="stat-value" id="badgesCount">0</span>
+                            <span>Medallas</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="stat-value" id="gymsCleared">0</span>
+                            <span>Gimnasios</span>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-bar">
+                        <div class="exp-fill" id="expFill"></div>
+                    </div>
+                    <p>Progreso al siguiente nivel: <span id="expProgress">0/100 XP</span></p>
+                </div>
+            </div>
+
+            <div class="level-map">
+                <h2 style="color: white; text-align: center; margin-bottom: 30px;">🗺️ Mapa de Gimnasios Claro</h2>
+                
+                <div class="level-path">
+                    <div class="level-node" id="level1" onclick="GameManager.startLevel(1)">
+                        <div class="level-header">
+                            <div class="level-title">🎫 Gimnasio Novato - Introducción</div>
+                            <div class="level-reward">📜 Medalla Novato</div>
+                        </div>
+                        <p>Aprende los fundamentos básicos de la portabilidad móvil en Claro.</p>
+                    </div>
+                    
+                    <div class="level-node locked" id="level2" onclick="GameManager.startLevel(2)">
+                        <div class="level-header">
+                            <div class="level-title">⚙️ Gimnasio Técnico - Proceso</div>
+                            <div class="level-reward">🔧 Medalla Técnico</div>
+                        </div>
+                        <p>Domina el proceso completo de portabilidad paso a paso.</p>
+                    </div>
+                    
+                    <div class="level-node locked" id="level3" onclick="GameManager.startLevel(3)">
+                        <div class="level-header">
+                            <div class="level-title">📋 Gimnasio Especialista - Documentación</div>
+                            <div class="level-reward">📄 Medalla Especialista</div>
+                        </div>
+                        <p>Conviértete en experto en validación de documentos.</p>
+                    </div>
+                    
+                    <div class="level-node locked" id="level4" onclick="GameManager.startLevel(4)">
+                        <div class="level-header">
+                            <div class="level-title">🚨 Gimnasio Maestro - Objeciones</div>
+                            <div class="level-reward">⚡ Medalla Maestro</div>
+                        </div>
+                        <p>Aprende a manejar objeciones comunes en el proceso de portabilidad.</p>
+                    </div>
+                    
+                    <div class="level-node locked" id="level5" onclick="GameManager.startLevel(5)">
+                        <div class="level-header">
+                            <div class="level-title">👑 Gimnasio Campeón - Liga Elite</div>
+                            <div class="level-reward">🏆 Medalla Campeón</div>
+                        </div>
+                        <p>El desafío final para convertirte en el Maestro de Portabilidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badge-showcase">
+                <h2 style="margin-bottom: 20px;">🏅 Colección de Medallas</h2>
+                <div class="badge-collection">
+                    <div class="gym-badge locked" id="badge1">
+                        <span>📜</span>
+                        <div class="badge-name">Novato</div>
+                    </div>
+                    <div class="gym-badge locked" id="badge2">
+                        <span>🔧</span>
+                        <div class="badge-name">Técnico</div>
+                    </div>
+                    <div class="gym-badge locked" id="badge3">
+                        <span>📄</span>
+                        <div class="badge-name">Especialista</div>
+                    </div>
+                    <div class="gym-badge locked" id="badge4">
+                        <span>⚡</span>
+                        <div class="badge-name">Maestro</div>
+                    </div>
+                    <div class="gym-badge locked" id="badge5">
+                        <span>🏆</span>
+                        <div class="badge-name">Campeón</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen" id="battleScreen">
+            <div class="battle-scene active" id="battle-scene">
+                <div class="opponent-sprite">
+                    <div class="opponent-name" id="opponentName">
+                        🎯 Líder de Gimnasio
+                    </div>
+                    <div class="dialogue-box" id="dialogueBox">
+                        "¡Prepárate para el desafío de portabilidad más emocionante de tu vida!"
+                    </div>
+                </div>
+
+                <div class="battle-question">
+                    <h3 style="margin-bottom: 20px; color: #ffa502;" id="questionText">
+                        Pregunta aparecerá aquí
+                    </h3>
+                    <div class="move-grid" id="moveGrid">
+                        </div>
+                </div>
+
+                <div class="battle-controls" style="text-align: center; margin-top: 30px;">
+                    <div style="color: #ffa502; margin-bottom: 15px;">
+                        Pregunta <span id="currentQuestion">1</span> de <span id="totalQuestions">3</span>
+                    </div>
+                    <button class="action-button warning" onclick="GameManager.returnToMap()" style="margin-top: 20px;">
+                        🏠 Volver al Mapa
+                    </button>
+                </div>
+
+                <div class="battle-result" id="battleResult">
+                    <h3>¡Resultado de la Batalla!</h3>
+                    <p id="resultMessage">Mensaje del resultado</p>
+                    <button class="action-button success" onclick="GameManager.nextQuestion()">
+                        ➡️ Siguiente Pregunta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="champion-hall" id="championHall">
+            <h1 style="font-size: 3em; margin-bottom: 20px;">🎉 ¡FELICITACIONES! 🎉</h1>
+            <h2 style="margin-bottom: 30px;">Eres el nuevo Maestro de Portabilidad Claro</h2>
+            <div style="background: rgba(255,255,255,0.2); border-radius: 15px; padding: 25px; margin: 30px 0;">
+                <h3>🏆 Certificado de Maestría</h3>
+                <p style="margin: 15px 0; font-size: 1.1em;">
+                    Has completado con éxito todos los gimnasios de la Liga Claro Perú.
+                    Ahora posees el conocimiento completo para ser un experto en portabilidad móvil.
+                </p>
+                <div style="margin: 20px 0;">
+                    <strong>Estadísticas Finales:</strong><br>
+                    Nivel: <span id="finalLevel">5</span> | 
+                    XP Total: <span id="finalXP">500</span> | 
+                    Medallas: <span id="finalBadges">5/5</span>
+                </div>
+            </div>
+            <button class="action-button" onclick="GameManager.restartGame()" style="font-size: 18px; padding: 20px 40px;">
+                🔄 Jugar Nuevamente
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
