@@ -299,6 +299,14 @@ body {
     box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
 }
 
+/* ===== ESTILO PARA BOTÓN DE LOGOUT DE ASESOR (AÑADIDO) ===== */
+#advisorLogoutButton {
+    padding: 12px 25px;
+    font-size: 16px;
+    margin-top: 20px; /* Espacio superior para separarlo del perfil */
+}
+
+
 .report-info {
     background: rgba(52, 73, 250, 0.1);
     border-left: 4px solid #3742fa;
